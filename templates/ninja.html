@@ -1,0 +1,57 @@
+{% extends 'layout.html' %} {% block main %}
+<div class="container p-5">
+    <div class="row">
+        <div class="col-1">
+            <h4 class="fw-bold">Tu oro</h4>
+        </div>
+        <div class="col-2">
+            <div class="container border bg-warning">
+                <h5>{{suma}}</h5>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row text-center">
+        <div class="col-3 p-4 border bg-primary">
+            <h3>Granja</h3>
+            <p>(Gana entre 10 y 20 de oro)</p>
+            <form action="/gold/process_money" method="post">
+                <input type="hidden" name="lugar" value="granja">
+                <button class="btn btn-primary">Encontra oro!</button>
+            </form>
+        </div>
+        <div class="col-3 p-4 border bg-warning">
+            <h3>Cueva</h3>
+            <p>(Gana entre 5 y 10 de oro)</p>
+            <form action="/gold/process_money" method="post">
+                <input type="hidden" name="lugar" value="cueva">
+                <button class="btn btn-primary">Encontra oro!</button>
+            </form>
+        </div>
+        <div class="col-3 p-4 border btn-success">
+            <h3>Casa</h3>
+            <p>(Gana entre 2 y 5 de oro)</p>
+            <form action="/gold/process_money" method="post">
+                <input type="hidden" name="lugar" value="casa">
+                <button class="btn btn-primary">Encontra oro!</button>
+            </form>
+        </div>
+        <div class="col-3 p-4 border btn-info">
+            <h3>Casino</h3>
+            <p>(Apuesta hasta 50 de oro)</p>
+            <form action="/gold/process_money" method="post">
+                <input type="hidden" name="lugar" value="casino">
+                <button class="btn btn-primary">Apuesta oro!</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <h5>Actividades:</h5>
+
+    <div class="container border">
+        {% for actividad in actividades %}
+        <p class="{{actividad.color}}">{{actividad.text}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
